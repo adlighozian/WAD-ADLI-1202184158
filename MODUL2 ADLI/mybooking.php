@@ -53,23 +53,40 @@
 <body>
 
     <?php
+
+    $mt_rand = mt_rand(100000, 999999);
+
     $time = strtotime(str_replace("-", "/", $_POST["tanggal"]));
 
     $date_input = date('d-m-Y', $time);
 
     $check = date('d-m-Y', strtotime($_POST['tanggal'] . " +" . $_POST["durasi"] . " day"));
 
-    $total = 200 * (int)$_POST["durasi"];
+    //if (isset( $_POST['pilihan'];)) { $total += 20; }
 
-    if (isset($_POST["makan"]))
-    { $total += 20; }
+    if ($_POST['pilihan'] == "VIP") {
+        $total = 90 * (int)$_POST["durasi"];
+    }
+    if ($_POST['pilihan'] == "LUXURY") {
+        $total = 150 * (int)$_POST["durasi"];
+    }
+    if ($_POST['pilihan'] == "MEVVAH") {
+        $total = 200 * (int)$_POST["durasi"];
+    }
 
-    if (isset($_POST["service"]))
-    { $total += 20; }
-      
+    //$total = 200 * (int)$_POST["durasi"];
+
+    if (isset($_POST["makan"])) {
+        $total += 20;
+    }
+
+    if (isset($_POST["service"])) {
+        $total += 20;
+    }
+
     ?>
 
-            
+
 
 
 
@@ -89,7 +106,7 @@
 
         <tbody>
             <tr>
-                <td scope="row">1</td>
+                <td> <?php echo $mt_rand; ?></td>
                 <td><?php echo $_POST["nama"]; ?></td>
                 <td><?php echo $date_input; ?> </td>
                 <td><?php echo $check; ?></td>
@@ -97,12 +114,16 @@
                 <td><?php echo $_POST["hp"]; ?></td>
                 <td>
                     <ul>
-                    <li><?php if (isset($_POST["service"])) {echo "Room sevice";}  ?> </li>
-                    <li><?php if (isset($_POST["makan"])) {echo "BreakFast";}  ?> </li>
+                        <li><?php if (isset($_POST["service"])) {
+                                echo "Room sevice";
+                            }  ?> </li>
+                        <li><?php if (isset($_POST["makan"])) {
+                                echo "BreakFast";
+                            }  ?> </li>
                     </ul>
                 </td>
-                
-               <td> $<?php echo $total; ?>  </td>
+
+                <td> $<?php echo $total; ?> </td>
             </tr>
         </tbody>
     </table>
