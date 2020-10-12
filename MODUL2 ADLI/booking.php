@@ -73,7 +73,7 @@
 
                     <div>
                         <p>Room Type</p>
-                        <select class="custom-select" name="pilihan">
+                        <select class="custom-select" name="pilih">
                             <option value="VIP" <?php if ($_GET['judul'] === "VIP") { echo "selected"; } ?>>Standard</option>
                             <option value="LUXURY" <?php if ($_GET['judul'] === "LUXURY") { echo "selected"; } ?>>Superior</option>
                             <option value="MEVVAH" <?php if ($_GET['judul'] === "MEVVAH") { echo "selected"; } ?>>Luxury</option>

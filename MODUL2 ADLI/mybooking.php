@@ -53,9 +53,6 @@
 <body>
 
     <?php
-
-    $mt_rand = mt_rand(100000, 999999);
-
     $time = strtotime(str_replace("-", "/", $_POST["tanggal"]));
 
     $date_input = date('d-m-Y', $time);
@@ -106,7 +103,6 @@
 
         <tbody>
             <tr>
-                <td> <?php echo $mt_rand; ?></td>
                 <td><?php echo $_POST["nama"]; ?></td>
                 <td><?php echo $date_input; ?> </td>
                 <td><?php echo $check; ?></td>
