@@ -1,8 +1,8 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "praktikum");
+$conn = mysqli_connect("localhost", "", "root", "praktikum");
 
-if (isset($_POST["submit"])) {
+if ($_POST["submit"]) {
 
 
     $nama = $_POST["nama"];
@@ -14,9 +14,9 @@ if (isset($_POST["submit"])) {
     $berakhir = $_POST["berakhir"];
     $tempat = $_POST["tempat"];
     $harga = $_POST["harga"];
-    
+
     $query = "INSERT INTO modul3 VALUES ('','$nama','$deskripsi','$gambar',' $kategori','$tanggal','$mulai','$berakhir','$tempat','$harga','')";
-    mysqli_query($conn, $query);
+    mysqli_connect($conn, $query);
 }
 
 
@@ -239,7 +239,7 @@ if (isset($_POST["submit"])) {
 
                             <div class="col">
 
-                               <button type="submit" name="submit" class="btn btn-primary btn-sm">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary btn-sm">Submit</button>
                                 <button type="reset" class="btn btn-danger btn-sm">Cancel</button>
 
                                 <!-- <input type="submit" value="submit" name="submit" class="btn btn-primary btn-sm" />
