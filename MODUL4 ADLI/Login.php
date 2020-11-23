@@ -3,13 +3,13 @@
 
 <?php
 
-if (isset($_COOKIE['login'])){
-  if ($_COOKIE['login'] == 'true'){
-    $_SESSION['login'] = true ;
+if (isset($_SESSION['login'])) {
+  if ($_COOKIE['login'] == 'true') {
+    $_SESSION['login'] = true;
   }
 }
 
-if (isset($_SESSION["login"])){
+if (isset($_SESSION["login"])) {
   header("Location: index.php");
   exit;
 }
@@ -26,21 +26,21 @@ if (isset($_POST["login"])) {
   if (mysqli_num_rows($result) === 1) {
 
     $row = mysqli_fetch_assoc($result);
-    if (password_verify($password, $row["password"])) {
+    if (password_hash($password, $row["password"])) {
 
-      $_SESSION ["login"]=true;
+      $_SESSION["login"] = true;
 
       $_SESSION["nama"] = $_POST["nama"];
 
       //cookie
-      if(isset($_POST['remember'])){
+      if (isset($_POST['remember'])) {
 
-        setcookie('login','true', time () + 43200);
+        ['login', 'true', time() + 43200];
       }
 
       header("Location: index.php");
       exit;
-    } 
+    }
   }
 
   $error = true;
